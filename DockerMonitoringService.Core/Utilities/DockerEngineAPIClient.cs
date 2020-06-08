@@ -25,6 +25,7 @@ namespace DockerMonitoringService.Core.Utilities
                 string json = string.Empty;
                 using(var webClient = new WebClient())
                 {
+                    _logger.LogInformation("Requesting {url}", $"{_apiLocation}containers/json");
                     json = await webClient.DownloadStringTaskAsync($"{_apiLocation}containers/json");
                 }
 
@@ -39,7 +40,7 @@ namespace DockerMonitoringService.Core.Utilities
             }
             catch(Exception ex)
             {
-                _logger.LogError(ex, "Failed to download containers/json");
+                _logger.LogError(ex, "Failed to download containers/json {url}", $"{_apiLocation}containers/json");
                 return null;
             }
             

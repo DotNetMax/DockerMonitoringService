@@ -10,6 +10,7 @@ services:
       - monitoring_network
     depends_on: 
       - postgresql_database
+      - docker-socket-proxy
   
   postgresql_database:
     image: postgres:latest
@@ -45,6 +46,20 @@ services:
         - 3000:3000
     networks: 
         - monitoring_network
+
+  docker-socket-proxy:
+    image: tecnativa/docker-socket-proxy
+    environment:
+      - SERVICES=1
+      - TASKS=1
+      - NETWORKS=1
+      - NODES=1
+      - SYSTEM=1
+      - CONTAINERS=1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - monitoring_network
 
 volumes: 
   databasedata:
