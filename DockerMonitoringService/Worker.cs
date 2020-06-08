@@ -26,12 +26,13 @@ namespace DockerMonitoringService
             {
                 _logger.LogInformation("Monitoring Service running at: {time}", DateTimeOffset.Now);
 
-                
+                //Load Containers -> Load their Stats -> Delete old Stats
                 await _monitoringService.UpdateContainersAsync();
                 await _monitoringService.SaveCurrentContainerStatsAsync();
                 await _monitoringService.DeleteOlderContainerStatsEntries();
 
-                await Task.Delay(TimeSpan.FromSeconds(15), stoppingToken);
+                //Repeat after 30 Seconds
+                await Task.Delay(TimeSpan.FromSeconds(30), stoppingToken);
             }
         }
     }
