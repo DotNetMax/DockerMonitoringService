@@ -6,7 +6,6 @@
     <Version>1.0.0</Version>
     <Authors>DotNetMax</Authors>
     <PackageDescription>Core Library for the DockerMonitoringService</PackageDescription>
-    <RepositoryUrl>https://github.com/DotNetMax/DockerMonitoringService</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
