@@ -16,4 +16,4 @@ Setup Dependency Injection like [this](https://github.com/DotNetMax/DockerMonito
 
 #### Dashboard Example
 
-![example] (GrafanaExample.png)
+![image](https://github.com/DotNetMax/DockerMonitoringService/blob/develop/GrafanaExample.png)
