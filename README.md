@@ -11,6 +11,6 @@ You need to create two tables in your Database. If you use PostgreSQL [here](htt
 
 #### How to use
 
-Go to [Packages](https://github.com/DotNetMax/DockerMonitoringService/packages) and get the latest Version of the Core package.
+Go to [Nuget](https://www.nuget.org/packages/DockerMonitoringService.Core/) and get the latest Version of the Core package.
 Setup Dependency Injection like [this](https://github.com/DotNetMax/DockerMonitoringService/blob/master/DockerMonitoringService/Program.cs). To run the Service use the IMonitoringService interface like [this](https://github.com/DotNetMax/DockerMonitoringService/blob/master/DockerMonitoringService/Worker.cs).
 
