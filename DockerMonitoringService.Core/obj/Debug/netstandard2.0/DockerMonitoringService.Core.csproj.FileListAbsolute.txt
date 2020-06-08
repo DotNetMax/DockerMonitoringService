@@ -1,0 +1,9 @@
+C:\Users\MaxD\source\repos\DockerEngineMonitoring\DockerMonitoringService.Core\bin\Debug\netstandard2.0\DockerMonitoringService.Core.deps.json
+C:\Users\MaxD\source\repos\DockerEngineMonitoring\DockerMonitoringService.Core\bin\Debug\netstandard2.0\DockerMonitoringService.Core.dll
+C:\Users\MaxD\source\repos\DockerEngineMonitoring\DockerMonitoringService.Core\bin\Debug\netstandard2.0\DockerMonitoringService.Core.pdb
+C:\Users\MaxD\source\repos\DockerEngineMonitoring\DockerMonitoringService.Core\obj\Debug\netstandard2.0\DockerMonitoringService.Core.csprojAssemblyReference.cache
+C:\Users\MaxD\source\repos\DockerEngineMonitoring\DockerMonitoringService.Core\obj\Debug\netstandard2.0\DockerMonitoringService.Core.csproj.CoreCompileInputs.cache
+C:\Users\MaxD\source\repos\DockerEngineMonitoring\DockerMonitoringService.Core\obj\Debug\netstandard2.0\DockerMonitoringService.Core.AssemblyInfoInputs.cache
+C:\Users\MaxD\source\repos\DockerEngineMonitoring\DockerMonitoringService.Core\obj\Debug\netstandard2.0\DockerMonitoringService.Core.AssemblyInfo.cs
+C:\Users\MaxD\source\repos\DockerEngineMonitoring\DockerMonitoringService.Core\obj\Debug\netstandard2.0\DockerMonitoringService.Core.dll
+C:\Users\MaxD\source\repos\DockerEngineMonitoring\DockerMonitoringService.Core\obj\Debug\netstandard2.0\DockerMonitoringService.Core.pdb
