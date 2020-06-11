@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>DockerMonitoringService.Core</PackageId>
+    <Version>1.0.3</Version>
+    <Authors>DotNetMax</Authors>
+    <PackageDescription>Core Library for the DockerMonitoringService</PackageDescription>
   </PropertyGroup>
 
   <ItemGroup>

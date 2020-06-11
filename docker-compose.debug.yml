@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  dockermonitoringservice:
+    image: dockermonitoringservice
+    build:
+      context: .
+      dockerfile: DockerMonitoringService/Dockerfile
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw

@@ -1,0 +1,68 @@
+version: '3.4'
+
+services:
+  dockermonitoringservice:
+    image: dockermonitoringservice
+    build:
+      context: .
+      dockerfile: DockerMonitoringService/Dockerfile
+    networks: 
+      - monitoring_network
+    depends_on: 
+      - postgresql_database
+      - docker-socket-proxy
+  
+  postgresql_database:
+    image: postgres:latest
+    environment: 
+        - POSTGRES_USER=admin
+        - POSTGRES_PASSWORD=adminadmin
+        - POSTGRES_DB=Metrics
+    ports:
+        - "5432:5432"
+    restart: unless-stopped
+    volumes: 
+        - databasedata:/var/lib/postgresql/data/
+    networks: 
+        - monitoring_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment: 
+        - PGADMIN_DEFAULT_EMAIL=pgadmin4@pgadmin.org
+        - PGADMIN_DEFAULT_PASSWORD=admin
+    ports: 
+        - "5050:80"
+    restart: unless-stopped
+    volumes: 
+        - ./pgadmin:/root/.pgadmin
+    networks: 
+      - monitoring_network
+
+  grafana: 
+    image: grafana/grafana
+    restart: unless-stopped
+    ports:
+        - 3000:3000
+    networks: 
+        - monitoring_network
+
+  docker-socket-proxy:
+    image: tecnativa/docker-socket-proxy
+    environment:
+      - SERVICES=1
+      - TASKS=1
+      - NETWORKS=1
+      - NODES=1
+      - SYSTEM=1
+      - CONTAINERS=1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - monitoring_network
+
+volumes: 
+  databasedata:
+
+networks: 
+  monitoring_network:
