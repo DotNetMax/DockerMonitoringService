@@ -41,17 +41,25 @@ namespace DockerMonitoringService
                     services.AddHostedService<Worker>();
                     
                     services.AddTransient<IMonitoringService>(
-                        s => new MonitoringService(Convert.ToInt32(hostContext.Configuration.GetSection("MonitoringServiceSettings")["RemoveOldEntriesAfterHours"])
+                        s => new MonitoringServiceDockerSocket(Convert.ToInt32(hostContext.Configuration.GetSection("MonitoringServiceSettings")["RemoveOldEntriesAfterHours"])
                             , s.GetServices<MetricsDataContext>().FirstOrDefault()
-                            , s.GetServices<ILogger<MonitoringService>>().FirstOrDefault()
+                            , s.GetServices<ILogger<MonitoringServiceDockerSocket>>().FirstOrDefault()));
+
+                    /* Not needed for Docker Socket Version
+                    services.AddTransient<IMonitoringService>(
+                        s => new MonitoringServiceDockerEngineAPI(Convert.ToInt32(hostContext.Configuration.GetSection("MonitoringServiceSettings")["RemoveOldEntriesAfterHours"])
+                            , s.GetServices<MetricsDataContext>().FirstOrDefault()
+                            , s.GetServices<ILogger<MonitoringServiceDockerEngineAPI>>().FirstOrDefault()
                             , s.GetServices<IDockerEngineAPIClient>().FirstOrDefault()));
 
                     services.AddTransient<IDockerEngineAPIClient>(
                         s => new DockerEngineAPIClient(s.GetServices<ILogger<DockerEngineAPIClient>>().FirstOrDefault()
                             , hostContext.Configuration.GetSection("MonitoringServiceSettings")["DockerEngineApiLocation"]));
+                    */
 
                     var optionsBuilder = new DbContextOptionsBuilder<MetricsDataContext>();
-                    optionsBuilder.UseNpgsql(hostContext.Configuration.GetConnectionString("MetricsDbConnection"));                
+                    optionsBuilder.UseNpgsql(hostContext.Configuration.GetConnectionString("MetricsDbConnection"));       
+
                     services.AddSingleton<MetricsDataContext>(ctx => new MetricsDataContext(optionsBuilder.Options));      
                 })
                 .UseSerilog();

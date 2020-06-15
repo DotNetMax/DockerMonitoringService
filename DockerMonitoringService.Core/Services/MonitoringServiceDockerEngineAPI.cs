@@ -10,16 +10,16 @@ using Microsoft.Extensions.Logging;
 
 namespace DockerMonitoringService.Core.Services
 {
-    public class MonitoringService : IMonitoringService
+    public class MonitoringServiceDockerEngineAPI : IMonitoringService
     {
         private readonly IDockerEngineAPIClient _apiClient;
         private MetricsDataContext _metricsDataContext;
-        private readonly ILogger<MonitoringService> _logger;
+        private readonly ILogger<MonitoringServiceDockerEngineAPI> _logger;
         private readonly int _removeAfterHours;
 
-        public MonitoringService(int removeAfterHours
+        public MonitoringServiceDockerEngineAPI(int removeAfterHours
             , MetricsDataContext metricsDataContext
-            , ILogger<MonitoringService> logger
+            , ILogger<MonitoringServiceDockerEngineAPI> logger
             , IDockerEngineAPIClient apiClient)
         {
             _apiClient = apiClient;
@@ -147,6 +147,11 @@ namespace DockerMonitoringService.Core.Services
                 _metricsDataContext.SaveChanges();
             }
             return Task.CompletedTask;
+        }
+
+        public Task DeleteNotExistingContainersAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

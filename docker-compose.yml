@@ -8,9 +8,11 @@ services:
       dockerfile: DockerMonitoringService/Dockerfile
     networks: 
       - monitoring_network
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     depends_on: 
       - postgresql_database
-      - docker-socket-proxy
+#      - docker-socket-proxy
   
   postgresql_database:
     image: postgres:latest
@@ -47,19 +49,20 @@ services:
     networks: 
         - monitoring_network
 
-  docker-socket-proxy:
-    image: tecnativa/docker-socket-proxy
-    environment:
-      - SERVICES=1
-      - TASKS=1
-      - NETWORKS=1
-      - NODES=1
-      - SYSTEM=1
-      - CONTAINERS=1
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - monitoring_network
+#Only needed for API Version
+#  docker-socket-proxy:
+#    image: tecnativa/docker-socket-proxy
+#    environment:
+#      - SERVICES=1
+#      - TASKS=1
+#      - NETWORKS=1
+#      - NODES=1
+#      - SYSTEM=1
+#      - CONTAINERS=1
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#    networks:
+#      - monitoring_network
 
 volumes: 
   databasedata:

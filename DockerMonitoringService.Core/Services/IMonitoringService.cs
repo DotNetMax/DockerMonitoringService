@@ -21,5 +21,11 @@ namespace DockerMonitoringService.Core.Services
         ///The hour range has to be set in the constructor!
         ///</summary>
         Task DeleteOlderContainerStatsEntries();
+
+        ///<summary>
+        ///Deletes Containers that dont exists anymore
+        ///</summary>
+        Task DeleteNotExistingContainersAsync();
+
     }
 }
